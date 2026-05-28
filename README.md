@@ -23,6 +23,10 @@ The frontend includes placeholder pages and components for:
 6. **Micro-Insurance** - Policy management and premium payments
 7. **Family Wallets** - Family member management with roles and spending limits
 
+## Loading States
+
+Dashboard, Bills, and Insights now use route-level skeleton screens built from `components/ui/Skeleton.tsx` so primary panels load with stable layout blocks instead of ad-hoc spinners.
+
 ## Getting Started
 
 ### Environment Configuration
