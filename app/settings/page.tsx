@@ -614,7 +614,6 @@ function FamilySection() {
 function PreferencesSection() {
   const { density, setDensity } = useDensity();
   const [theme, setTheme] = useState<"system" | "light" | "dark">("system");
-  const { density, setDensity } = useDensity();
   const themes = [
     { id: "system", label: "System",  Icon: Smartphone },
     { id: "light",  label: "Light",   Icon: Sun        },
