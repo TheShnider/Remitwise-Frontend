@@ -4,6 +4,7 @@ import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { DensityProvider } from "@/lib/context/DensityContext";
 import { ToastProvider } from "@/lib/context/ToastContext";
+import { AsyncOperationsProvider } from "@/lib/context/AsyncOperationsContext";
 import ToastRegion from "@/components/ToastRegion";
 import SessionExpiryProvider from "@/components/SessionExpiryProvider";
 import { WalletProvider } from "stellar-wallet-kit";
@@ -27,12 +28,14 @@ export default function RootLayout({
         <WalletProvider>
           <ToastProvider>
             <DensityProvider>
-              <SessionExpiryProvider>
-                <LayoutWrapper>
-                  {children}
-                </LayoutWrapper>
-                <ToastRegion />
-              </SessionExpiryProvider>
+              <AsyncOperationsProvider>
+                <SessionExpiryProvider>
+                  <LayoutWrapper>
+                    {children}
+                  </LayoutWrapper>
+                  <ToastRegion />
+                </SessionExpiryProvider>
+              </AsyncOperationsProvider>
             </DensityProvider>
           </ToastProvider>
         </WalletProvider>
