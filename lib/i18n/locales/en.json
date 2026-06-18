@@ -50,5 +50,64 @@
       "fetchFailed": "Failed to fetch transactions",
       "genericError": "An error occurred"
     }
+  },
+  "send": {
+    "steps": {
+      "recipient": "Recipient",
+      "amount": "Amount",
+      "review": "Review"
+    },
+    "toast": {
+      "transferSubmitted": "Transfer submitted",
+      "transferSuccess": "Successfully sent {{amount}} {{currency}} to {{address}}."
+    }
+  },
+  "split": {
+    "allocationEditor": "Allocation editor",
+    "currentAllocation": "Current Allocation",
+    "currentAllocationDescription": "Customize how your remittances are distributed, then keep the contract submission states anchored to the same area so the workflow never feels detached.",
+    "allocationNote": "Allocation changes are saved as a USDC smart contract action. The payload is prepared in-app and the wallet signs it locally.",
+    "inputs": {
+      "dailySpending": "Daily Spending",
+      "dailySpendingDescription": "For immediate family expenses",
+      "savings": "Savings",
+      "savingsDescription": "Allocated to savings goals",
+      "bills": "Bills",
+      "billsDescription": "Automated bill payments",
+      "insurance": "Insurance",
+      "insuranceDescription": "Micro-insurance premiums"
+    },
+    "total": "Total",
+    "totalDescription": "Every contract build should block submission until this is exactly 100%.",
+    "asyncStatus": {
+      "idleTitle": "Contract submission placement",
+      "idleDescription": "Keep validation and build feedback inline with the form. Reserve stacked status cards for submit and confirmation so they can persist after navigation.",
+      "pendingTitle": "Building contract request",
+      "pendingDescription": "Show the user that the remittance_split payload is being prepared before the wallet step opens."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "connectContract": "Connect Contract First",
+      "save": "Save"
+    },
+    "asyncPanel": {
+      "eyebrow": "Async behavior",
+      "title": "Duration, Stacking, and Placement",
+      "description": "This route is the clearest contract-configuration example, so it sets the pattern for where each submission state should appear.",
+      "queueTitle": "Stack behavior",
+      "queueDescription": "Keep no more than three visible submission cards at a time. Newest actions stay highest in the stack and mobile collapses the stack inline below the initiating form.",
+      "footer": "No new Tailwind tokens are required for this pattern. The implementation reuses existing reds, neutrals, focus rings, and arbitrary-value gradients already used in the app."
+    },
+    "stages": {
+      "validateAllocation": "Validate allocation",
+      "buildContractRequest": "Build contract request",
+      "requestWalletSignature": "Request wallet signature",
+      "submitAndConfirm": "Submit and confirm"
+    }
+  },
+  "localeSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "spanish": "Español"
   }
 }

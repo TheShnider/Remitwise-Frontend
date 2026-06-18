@@ -28,7 +28,16 @@ export function useClientLocale(defaultLocale: SupportedLocale = "en") {
 	const [locale, setLocale] = useState<SupportedLocale>(defaultLocale);
 
 	useEffect(() => {
-		if (typeof navigator === "undefined") return;
+		if (typeof window === "undefined") return;
+		
+		// Check localStorage first
+		const storedLocale = localStorage.getItem("locale") as SupportedLocale;
+		if (storedLocale && (storedLocale === "en" || storedLocale === "es")) {
+			setLocale(storedLocale);
+			return;
+		}
+		
+		// Fall back to browser language
 		setLocale(resolveLocale(navigator.language));
 	}, []);
 

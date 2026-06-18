@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Save, ShieldCheck, Wallet, Clock3, Layers3 } from "lucide-react";
+import { useClientTranslator } from "@/lib/i18n/client";
 import SmartMoneySplitHeader from "@/components/SmartMoneySplitHeader";
 import HowItWorks from "@/components/HowItWorksModal";
 import AsyncOperationsPanel from "@/components/AsyncOperationsPanel";
@@ -67,6 +68,8 @@ const splitQueue = [
 ];
 
 export default function SplitConfiguration() {
+	const { t } = useClientTranslator();
+
 	return (
 		<div className='min-h-screen bg-[#010101] safari-safe-bottom'>
 			<SmartMoneySplitHeader />
@@ -76,44 +79,42 @@ export default function SplitConfiguration() {
 					<div className='rounded-3xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] p-5 320:p-6 375:p-7 sm:p-8'>
 						<div className='border-b border-white/[0.08] pb-5 375:pb-6'>
 							<p className='text-xs font-semibold uppercase tracking-[0.24em] text-red-300'>
-								Allocation editor
+								{t("split.allocationEditor")}
 							</p>
 							<h2 className='mt-3 text-xl 375:text-2xl font-semibold text-white'>
-								Current Allocation
+								{t("split.currentAllocation")}
 							</h2>
 							<p className='mt-2 text-sm 375:text-base leading-6 text-gray-300'>
-								Customize how your remittances are distributed, then keep the
-								contract submission states anchored to the same area so the
-								workflow never feels detached.
+								{t("split.currentAllocationDescription")}
 							</p>
 						</div>
 
 						<p className='mt-3 text-sm leading-6 text-gray-300'>
-							Allocation changes are saved as a USDC smart contract action. The payload is prepared in-app and the wallet signs it locally.
+							{t("split.allocationNote")}
 						</p>
 
 						<form className='mt-6 space-y-5 375:space-y-6'>
 							<SplitInput
-								label='Daily Spending'
-								description='For immediate family expenses'
+								label={t("split.inputs.dailySpending")}
+								description={t("split.inputs.dailySpendingDescription")}
 								value={50}
 								color='bg-blue-500'
 							/>
 							<SplitInput
-								label='Savings'
-								description='Allocated to savings goals'
+								label={t("split.inputs.savings")}
+								description={t("split.inputs.savingsDescription")}
 								value={30}
 								color='bg-green-500'
 							/>
 							<SplitInput
-								label='Bills'
-								description='Automated bill payments'
+								label={t("split.inputs.bills")}
+								description={t("split.inputs.billsDescription")}
 								value={15}
 								color='bg-yellow-500'
 							/>
 							<SplitInput
-								label='Insurance'
-								description='Micro-insurance premiums'
+								label={t("split.inputs.insurance")}
+								description={t("split.inputs.insuranceDescription")}
 								value={5}
 								color='bg-violet-500'
 							/>
@@ -121,10 +122,9 @@ export default function SplitConfiguration() {
 							<div className='rounded-2xl border border-white/[0.08] bg-[#141414] p-4 375:p-5'>
 								<div className='flex items-center justify-between gap-4'>
 									<div>
-										<p className='text-sm font-medium text-gray-300'>Total</p>
+										<p className='text-sm font-medium text-gray-300'>{t("split.total")}</p>
 										<p className='mt-1 text-xs 375:text-sm text-gray-500'>
-											Every contract build should block submission until this is
-											exactly 100%.
+											{t("split.totalDescription")}
 										</p>
 									</div>
 									<span className='text-2xl 375:text-3xl font-semibold text-white'>100%</span>
@@ -133,10 +133,10 @@ export default function SplitConfiguration() {
 
 							<AsyncSubmissionStatus
 								pending={false}
-								idleTitle='Contract submission placement'
-								idleDescription='Keep validation and build feedback inline with the form. Reserve stacked status cards for submit and confirmation so they can persist after navigation.'
-								pendingTitle='Building contract request'
-								pendingDescription='Show the user that the remittance_split payload is being prepared before the wallet step opens.'
+								idleTitle={t("split.asyncStatus.idleTitle")}
+								idleDescription={t("split.asyncStatus.idleDescription")}
+								pendingTitle={t("split.asyncStatus.pendingTitle")}
+								pendingDescription={t("split.asyncStatus.pendingDescription")}
 							/>
 
 							<HowItWorks />
@@ -145,14 +145,14 @@ export default function SplitConfiguration() {
 								<Link
 									href='/'
 									className='touch-target-wide flex-1 rounded-2xl border border-white/10 bg-[#161616] px-6 py-3.5 text-center text-sm 375:text-base font-semibold text-white transition hover:bg-[#202020] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101010]'>
-									Cancel
+									{t("split.buttons.cancel")}
 								</Link>
 								<button
 									type='submit'
 									className='touch-target-wide flex flex-1 items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-red-600 to-red-700 px-6 py-3.5 text-sm 375:text-base font-semibold text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101010] disabled:cursor-not-allowed disabled:opacity-60'
 									disabled>
 									<Save className='h-5 w-5' />
-									<span>Connect Contract First</span>
+									<span>{t("split.buttons.connectContract")}</span>
 								</button>
 							</div>
 						</form>
@@ -160,14 +160,14 @@ export default function SplitConfiguration() {
 
 					<aside className='space-y-6 xl:sticky xl:top-6'>
 						<AsyncOperationsPanel
-							eyebrow='Async behavior'
-							title='Duration, Stacking, and Placement'
-							description='This route is the clearest contract-configuration example, so it sets the pattern for where each submission state should appear.'
+							eyebrow={t("split.asyncPanel.eyebrow")}
+							title={t("split.asyncPanel.title")}
+							description={t("split.asyncPanel.description")}
 							stages={splitStages}
-							queueTitle='Stack behavior'
-							queueDescription='Keep no more than three visible submission cards at a time. Newest actions stay highest in the stack and mobile collapses the stack inline below the initiating form.'
+							queueTitle={t("split.asyncPanel.queueTitle")}
+							queueDescription={t("split.asyncPanel.queueDescription")}
 							queueItems={splitQueue}
-							footer='No new Tailwind tokens are required for this pattern. The implementation reuses existing reds, neutrals, focus rings, and arbitrary-value gradients already used in the app.'
+							footer={t("split.asyncPanel.footer")}
 						/>
 					</aside>
 				</div>

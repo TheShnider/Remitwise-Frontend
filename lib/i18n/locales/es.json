@@ -50,5 +50,64 @@
       "fetchFailed": "No se pudieron obtener las transacciones",
       "genericError": "Ocurrio un error"
     }
+  },
+  "send": {
+    "steps": {
+      "recipient": "Destinatario",
+      "amount": "Monto",
+      "review": "Revisar"
+    },
+    "toast": {
+      "transferSubmitted": "Transferencia enviada",
+      "transferSuccess": "Enviado exitosamente {{amount}} {{currency}} a {{address}}."
+    }
+  },
+  "split": {
+    "allocationEditor": "Editor de asignacion",
+    "currentAllocation": "Asignacion actual",
+    "currentAllocationDescription": "Personaliza como se distribuyen tus remesas, luego mantiene los estados de envio del contrato anclados a la misma area para que el flujo de trabajo nunca se sienta desconectado.",
+    "allocationNote": "Los cambios de asignacion se guardan como una accion de contrato inteligente USDC. El payload se prepara en la aplicacion y la billetera lo firma localmente.",
+    "inputs": {
+      "dailySpending": "Gasto diario",
+      "dailySpendingDescription": "Para gastos familiares inmediatos",
+      "savings": "Ahorros",
+      "savingsDescription": "Asignado a metas de ahorro",
+      "bills": "Facturas",
+      "billsDescription": "Pagos automaticos de facturas",
+      "insurance": "Seguro",
+      "insuranceDescription": "Primas de micro-seguro"
+    },
+    "total": "Total",
+    "totalDescription": "Cada construccion de contrato debe bloquear el envio hasta que esto sea exactamente 100%.",
+    "asyncStatus": {
+      "idleTitle": "Colocacion de envio de contrato",
+      "idleDescription": "Mantenga la validacion y el comentarios de construccion en linea con el formulario. Reserve tarjetas de estado apiladas para enviar y confirmar para que puedan persistir despues de la navegacion.",
+      "pendingTitle": "Construyendo solicitud de contrato",
+      "pendingDescription": "Muestre al usuario que el payload remittance_split se esta preparando antes de que se abra el paso de la billetera."
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "connectContract": "Conectar contrato primero",
+      "save": "Guardar"
+    },
+    "asyncPanel": {
+      "eyebrow": "Comportamiento asincrono",
+      "title": "Duracion, apilamiento y colocacion",
+      "description": "Esta ruta es el ejemplo mas claro de configuracion de contrato, por lo que establece el patron de donde debe aparecer cada estado de envio.",
+      "queueTitle": "Comportamiento de pila",
+      "queueDescription": "Mantenga no mas de tres tarjetas de envio visibles a la vez. Las acciones mas nuevas permanecen mas altas en la pila y el movil colapsa la pila en linea debajo del formulario iniciador.",
+      "footer": "No se requieren nuevos tokens Tailwind para este patron. La implementacion reutiliza los rojos existentes, neutrales, anillos de enfoque y gradientes de valor arbitrario ya utilizados en la aplicacion."
+    },
+    "stages": {
+      "validateAllocation": "Validar asignacion",
+      "buildContractRequest": "Construir solicitud de contrato",
+      "requestWalletSignature": "Solicitar firma de billetera",
+      "submitAndConfirm": "Enviar y confirmar"
+    }
+  },
+  "localeSwitcher": {
+    "label": "Idioma",
+    "english": "Ingles",
+    "spanish": "Español"
   }
 }

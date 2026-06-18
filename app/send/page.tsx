@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useToast } from "@/lib/context/ToastContext";
+import { useClientTranslator } from "@/lib/i18n/client";
 import EmergencyTransferModal from "./components/EmergencyTransferModal";
 import SendHeader from "./components/SendHeader";
 import RecipientAddressInput from "./components/RecipientAddressInput";
@@ -21,6 +22,7 @@ export default function SendMoney() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [transactionData, setTransactionData] = useState<any>(null);
   const { toast } = useToast();
+  const { t } = useClientTranslator();
 
   const handleRecipientContinue = () => {
     if (recipient) {
@@ -56,8 +58,8 @@ export default function SendMoney() {
     setIsSubmitted(true);
     toast({
       variant: "success",
-      title: "Transfer submitted",
-      description: `Successfully sent ${amount} ${currency} to ${mockData.recipientAddress}.`,
+      title: t("send.toast.transferSubmitted"),
+      description: t("send.toast.transferSuccess", { amount, currency, address: mockData.recipientAddress }),
     });
     console.log(`Send ${amount} ${currency} to ${recipient}`);
   };
@@ -83,7 +85,7 @@ export default function SendMoney() {
               </div>
               <span className={`text-xs font-bold uppercase tracking-wider ${
                 step === "recipient" ? "text-red-500" : "text-zinc-500"
-              }`}>Recipient</span>
+              }`}>{t("send.steps.recipient")}</span>
             </div>
 
             {/* Step 2 */}
@@ -95,7 +97,7 @@ export default function SendMoney() {
               </div>
               <span className={`text-xs font-bold uppercase tracking-wider ${
                 step === "amount" ? "text-red-500" : "text-zinc-500"
-              }`}>Amount</span>
+              }`}>{t("send.steps.amount")}</span>
             </div>
 
             {/* Step 3 */}
@@ -107,7 +109,7 @@ export default function SendMoney() {
               </div>
               <span className={`text-xs font-bold uppercase tracking-wider ${
                 step === "review" ? "text-red-500" : "text-zinc-500"
-              }`}>Review</span>
+              }`}>{t("send.steps.review")}</span>
             </div>
           </div>
         </div>
