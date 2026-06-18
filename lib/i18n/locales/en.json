@@ -30,11 +30,16 @@
   },
   "transactionHistory": {
     "title": "Transaction History",
+    "titleStandalone": "Transaction History",
+    "subtitleStandalone": "Search, filter, and review payment, split, bill, and insurance activity with grouped results by date.",
     "resultsCount": "{{count}} transactions found",
     "resultsCountZero": "No transactions found",
     "searchPlaceholder": "Search by transaction hash, address, or memo...",
     "searchPlaceholderMobile": "Search transactions...",
+    "searchStandalonePlaceholder": "Search ID, recipient, type, status, amount",
     "filters": "Filter Results",
+    "filtersHeading": "Filter transactions",
+    "filtersHelper": "Search combines with every selected type and status chip.",
     "export": "Export History",
     "tabs": {
       "all": "All Transactions",
@@ -42,8 +47,69 @@
       "pending": "Pending Review",
       "failed": "Needs Attention"
     },
+    "typeFilterLabel": "Type",
+    "statusFilterLabel": "Status",
+    "typeFilter": {
+      "all": "All types",
+      "send": "Send",
+      "split": "Split",
+      "bill": "Bills",
+      "insurance": "Insurance",
+      "savings": "Savings",
+      "family": "Family",
+      "received": "Received"
+    },
+    "statusFilter": {
+      "all": "All statuses",
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed"
+    },
+    "dateRange": {
+      "label": "Date range",
+      "from": "From date",
+      "to": "To date",
+      "clear": "Clear dates"
+    },
+    "dateGroups": {
+      "today": "Today",
+      "todayHelper": "Transactions from today",
+      "yesterday": "Yesterday",
+      "yesterdayHelper": "Transactions from yesterday",
+      "earlier": "Earlier",
+      "earlierHelper": "Older activity kept in chronological order"
+    },
+    "activeFilters": {
+      "label": "Active",
+      "none": "No filters applied",
+      "search": "Search: {{query}}",
+      "type": "Type: {{type}}",
+      "status": "Status: {{status}}",
+      "clearAll": "Clear all",
+      "clearSearch": "Clear transaction search",
+      "removeFilter": "Remove {{label}} filter"
+    },
     "empty": "No transactions matched your search.",
+    "noResults": {
+      "title": "No matching transactions",
+      "description": "Try clearing a filter, widening the status selection, or searching by recipient, ID, amount, or transaction type.",
+      "clearFilters": "Clear filters"
+    },
+    "emptyState": {
+      "title": "No transaction history yet",
+      "description": "Completed transfers, splits, bill payments, and insurance activity will appear here once you make your first transaction.",
+      "cta": "Send Money"
+    },
+    "resultsAriaLive": {
+      "one": "1 transaction found",
+      "many": "{{count}} transactions found",
+      "none": "No transactions found"
+    },
     "loadMore": "Load More Results",
+    "showing": "Showing {{count}} of {{total}} transactions",
+    "results_one": "{{count}} result",
+    "results_many": "{{count}} results",
+    "clearSearch": "Clear search",
     "alerts": {
       "filtersSoon": "Filter functionality coming soon!",
       "exportSoon": "Export functionality coming soon!",

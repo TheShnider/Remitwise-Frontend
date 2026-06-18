@@ -30,11 +30,16 @@
   },
   "transactionHistory": {
     "title": "Historial de transacciones",
+    "titleStandalone": "Historial de transacciones",
+    "subtitleStandalone": "Busca, filtra y revisa actividad de pagos, divisiones, facturas y seguros con resultados agrupados por fecha.",
     "resultsCount": "{{count}} transacciones encontradas",
     "resultsCountZero": "No se encontraron transacciones",
     "searchPlaceholder": "Busca por hash de transaccion, direccion o memo...",
     "searchPlaceholderMobile": "Busca transacciones...",
+    "searchStandalonePlaceholder": "Busca ID, destinatario, tipo, estado, monto",
     "filters": "Filtrar resultados",
+    "filtersHeading": "Filtrar transacciones",
+    "filtersHelper": "La busqueda se combina con cada chip de tipo y estado seleccionado.",
     "export": "Exportar historial",
     "tabs": {
       "all": "Todas las transacciones",
@@ -42,8 +47,69 @@
       "pending": "Pendientes de revision",
       "failed": "Requieren atencion"
     },
+    "typeFilterLabel": "Tipo",
+    "statusFilterLabel": "Estado",
+    "typeFilter": {
+      "all": "Todos los tipos",
+      "send": "Enviar",
+      "split": "Dividir",
+      "bill": "Facturas",
+      "insurance": "Seguro",
+      "savings": "Ahorros",
+      "family": "Familia",
+      "received": "Recibido"
+    },
+    "statusFilter": {
+      "all": "Todos los estados",
+      "completed": "Completado",
+      "pending": "Pendiente",
+      "failed": "Fallido"
+    },
+    "dateRange": {
+      "label": "Rango de fechas",
+      "from": "Fecha desde",
+      "to": "Fecha hasta",
+      "clear": "Limpiar fechas"
+    },
+    "dateGroups": {
+      "today": "Hoy",
+      "todayHelper": "Transacciones de hoy",
+      "yesterday": "Ayer",
+      "yesterdayHelper": "Transacciones de ayer",
+      "earlier": "Anteriores",
+      "earlierHelper": "Actividad mas antigua en orden cronologico"
+    },
+    "activeFilters": {
+      "label": "Activos",
+      "none": "Sin filtros aplicados",
+      "search": "Busqueda: {{query}}",
+      "type": "Tipo: {{type}}",
+      "status": "Estado: {{status}}",
+      "clearAll": "Limpiar todo",
+      "clearSearch": "Limpiar busqueda de transacciones",
+      "removeFilter": "Eliminar filtro {{label}}"
+    },
     "empty": "Ninguna transaccion coincide con tu busqueda.",
+    "noResults": {
+      "title": "Sin transacciones coincidentes",
+      "description": "Intenta limpiar un filtro, ampliar la seleccion de estado, o buscar por destinatario, ID, monto o tipo de transaccion.",
+      "clearFilters": "Limpiar filtros"
+    },
+    "emptyState": {
+      "title": "Aun no hay historial de transacciones",
+      "description": "Las transferencias completadas, divisiones, pagos de facturas y actividad de seguros apareceran aqui una vez que hagas tu primera transaccion.",
+      "cta": "Enviar dinero"
+    },
+    "resultsAriaLive": {
+      "one": "1 transaccion encontrada",
+      "many": "{{count}} transacciones encontradas",
+      "none": "No se encontraron transacciones"
+    },
     "loadMore": "Cargar mas resultados",
+    "showing": "Mostrando {{count}} de {{total}} transacciones",
+    "results_one": "{{count}} resultado",
+    "results_many": "{{count}} resultados",
+    "clearSearch": "Limpiar busqueda",
     "alerts": {
       "filtersSoon": "La funcion de filtros estara disponible pronto.",
       "exportSoon": "La exportacion estara disponible pronto.",
