@@ -2,6 +2,8 @@
 
 import { Zap, ArrowLeft, ShieldCheck, User, CreditCard } from "lucide-react";
 import AutomaticSplitCard from "./AutomaticSplitCard";
+import { useClientLocale } from "@/lib/i18n/client";
+import { formatCurrency } from "@/lib/utils/format-currency";
 
 interface ReviewStepProps {
   recipient: string;
@@ -23,6 +25,9 @@ export default function ReviewStep({
   onEmergencyAction,
   isPending = false,
 }: ReviewStepProps) {
+  const locale = useClientLocale();
+  const formattedAmount = formatCurrency(amount, currency, locale);
+
   return (
     <div className="mx-auto max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col lg:flex-row gap-8">
@@ -56,7 +61,7 @@ export default function ReviewStep({
                 <div>
                   <p className="text-xs text-zinc-500 uppercase tracking-wider font-bold mb-1">Amount to Send</p>
                   <p className="text-3xl font-bold text-white">
-                    {amount.toLocaleString()} <span className="text-red-500">{currency}</span>
+                    {formattedAmount}
                   </p>
                 </div>
               </div>
@@ -146,7 +151,7 @@ export default function ReviewStep({
         </div>
 
         <div className="lg:flex-[1]">
-          <AutomaticSplitCard amount={amount} />
+          <AutomaticSplitCard amount={amount} currency={currency} />
         </div>
       </div>
     </div>

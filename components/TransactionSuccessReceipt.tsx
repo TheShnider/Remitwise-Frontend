@@ -11,11 +11,12 @@ import {
   TrendingUp,
   FileText,
   Shield,
-  ArrowRight,
   ChevronRight,
   X
 } from "lucide-react";
 import Link from "next/link";
+import { useClientLocale } from "@/lib/i18n/client";
+import { formatCurrency } from "@/lib/utils/format-currency";
 
 interface SplitDetail {
   icon: React.ElementType;
@@ -55,6 +56,13 @@ export default function TransactionSuccessReceipt({
   onClose
 }: TransactionSuccessReceiptProps) {
   const [copied, setCopied] = useState(false);
+  const locale = useClientLocale();
+  const formattedAmount = formatCurrency(amount, currency, locale);
+  const formattedFee = formatCurrency(fee, currency, locale, {
+    minimumFractionDigits: 4,
+    maximumFractionDigits: 4,
+  });
+  const showCurrencyLabel = !formattedAmount.endsWith(` ${currency}`);
 
   const truncate = (str: string) =>
     `${str.substring(0, 6)}...${str.substring(str.length - 6)}`;
@@ -100,8 +108,10 @@ export default function TransactionSuccessReceipt({
           <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-center mb-8">
             <div className="text-sm text-gray-400 mb-1">Amount Sent</div>
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-4xl font-bold text-white">${amount.toFixed(2)}</span>
-              <span className="text-lg font-medium text-gray-500">{currency}</span>
+              <span className="text-4xl font-bold text-white">{formattedAmount}</span>
+              {showCurrencyLabel && (
+                <span className="text-lg font-medium text-gray-500">{currency}</span>
+              )}
             </div>
           </div>
 
@@ -120,7 +130,7 @@ export default function TransactionSuccessReceipt({
             </div>
             <div className="flex justify-between items-center text-sm">
               <span className="text-gray-500 font-medium">Network Fee</span>
-              <span className="text-white font-medium">${fee.toFixed(4)} {currency}</span>
+              <span className="text-white font-medium">{formattedFee}</span>
             </div>
             <div className="flex justify-between items-center text-sm">
               <span className="text-gray-500 font-medium">Transaction ID</span>
@@ -150,7 +160,7 @@ export default function TransactionSuccessReceipt({
                         <split.icon className="w-3.5 h-3.5 text-gray-400" />
                         <span className="text-gray-400">{split.label}</span>
                       </div>
-                      <span className="text-white font-bold">${split.amount.toFixed(2)}</span>
+                      <span className="text-white font-bold">{formatCurrency(split.amount, currency, locale)}</span>
                     </div>
                     <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
                       <div 

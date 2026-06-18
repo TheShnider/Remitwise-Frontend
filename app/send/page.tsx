@@ -12,6 +12,8 @@ import RecipientAddressInput from "./components/RecipientAddressInput";
 import AmountCurrencySection from "./components/AmountCurrencySection";
 import ReviewStep from "./components/ReviewStep";
 import TransactionSuccessReceipt from "@/components/TransactionSuccessReceipt";
+import { useClientLocale } from "@/lib/i18n/client";
+import { formatCurrency } from "@/lib/utils/format-currency";
 
 type Step = "recipient" | "amount" | "review";
 
