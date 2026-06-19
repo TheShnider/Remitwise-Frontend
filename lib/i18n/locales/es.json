@@ -224,6 +224,12 @@
       "genericError": "Ocurrio un error"
     }
   },
+  "rates": {
+    "loading": "Cargando tasas…",
+    "error": "No se pudieron cargar las tasas de cambio. Inténtalo de nuevo.",
+    "stale": "Las tasas pueden estar desactualizadas",
+    "refresh": "Actualizar tasas"
+  },
   "send": {
     "confirm_button": "Confirmar y enviar remesa",
     "confirm_pending": "Procesando…",

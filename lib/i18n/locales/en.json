@@ -272,6 +272,12 @@
       "genericError": "An error occurred"
     }
   },
+  "rates": {
+    "loading": "Loading rates…",
+    "error": "Could not load exchange rates. Please try again.",
+    "stale": "Rates may be outdated",
+    "refresh": "Refresh rates"
+  },
   "send": {
     "confirm_button": "Confirm & Send Remittance",
     "confirm_pending": "Processing…",

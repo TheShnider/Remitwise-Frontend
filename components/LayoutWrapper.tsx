@@ -24,7 +24,6 @@ export default function LayoutWrapper({
   return (
     <RootErrorBoundary>
       <Header />
-      {/* Add padding-top to account for fixed header */}
       <div className="pt-20">
         {children}
         <FinalCallToAction />
