@@ -70,37 +70,56 @@ npm run build
 npm start
 ```
 
-### Testing
+### Testing Toolchain
 
-The project includes unit tests and integration tests for API routes.
+This project uses a multi-tool testing strategy. Note that **Jest is not used** in this repository.
+
+#### Testing Frameworks Mapping
+
+- **Node.js Native Test Runner (`node:test`)**
+  - Used for: `.cjs` files
+  - Commands: `npm run test:unit:node`, `npm run test:integration`
+
+- **Vitest**
+  - Used for: `.ts` / `.tsx` files (Unit & component testing)
+  - Commands: `npm run test:unit:vitest`, `npm run test:coverage`
+
+- **Playwright**
+  - Used for: End-to-End (E2E) testing
+  - Command: `npm run test:e2e`
+
+- **Property Tests**
+  - Used for: Property-based testing
+  - Command: `npm run test:property`
 
 #### Running Tests
 
+It is important to understand the difference between `npm run test` and `npm run test:coverage`:
+
+- `npm run test` (Limited): Runs a standard fast suite of tests (typically limited to unit tests).
+- `npm run test:coverage` (Broad): Uses Vitest to run the broader test suite (including all `.test.ts` files) and generates a comprehensive code coverage report. Contributors should generally use this to ensure full coverage.
+
 ```bash
-# Run all tests (unit + integration)
+# Run standard unit tests
 npm test
 
-# Run unit tests only
-npm run test:unit
+# Run full Vitest suite with coverage
+npm run test:coverage
 
-# Run integration tests only
+# Run integration tests
 npm run test:integration
-
-# Run integration tests in watch mode
-npm run test:integration:watch
 ```
 
 #### Unit Tests
 
-- **Location**: `tests/unit/`
-- **Command**: `npm run test:unit`
-- **Framework**: Node.js built-in `test` module
+- **Location**: `tests/unit/` and `tests/session/`
+- **Command**: `npm run test:unit` (runs both Node and Vitest)
 
 #### Integration Tests
 
 - **Location**: `tests/integration/`
 - **Command**: `npm run test:integration`
-- **Framework**: Node.js `node:test` + direct route handler calls
+- **Framework**: `node:test` + direct route handler calls
 - **Database**: In-memory SQLite (fast, isolated)
 - **Speed**: Sub-10 second execution
 

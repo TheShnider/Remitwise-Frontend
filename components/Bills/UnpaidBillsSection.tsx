@@ -37,14 +37,15 @@ export function UnpaidBillsSection() {
             {statusOrder.map((status) => {
                 const bills = billsByStatus[status] ?? [];
                 if (!bills.length) return null;
-                const headerStyles = {
-                    overdue: "text-red-400",
+                const headerStyles: Record<string, string> = {
+                    paid: 'text-green-700 bg-green-50 border-green-200',
+                    overdue: 'text-red-700 bg-red-50 border-red-200',
                     urgent: "text-amber-400",
                     upcoming: "text-white/60",
                 };
                 return (
                     <section key={status} className="mb-4">
-                        <h3 className={`text-lg font-semibold ${headerStyles[status]}`}>{status.charAt(0).toUpperCase() + status.slice(1)} Bills</h3>
+                        <h3 className={`text-lg font-semibold ${headerStyles[status] || "text-white/60"}`}>{status.charAt(0).toUpperCase() + status.slice(1)} Bills</h3>
                         <div className={density === 'compact' ? "flex flex-col gap-2" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-[19.67px]"}>
                             {bills.map((bill) => (
                                 <BillCards key={bill.id} bill={bill} density={density} />

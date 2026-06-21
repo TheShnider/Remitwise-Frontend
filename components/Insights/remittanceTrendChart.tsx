@@ -1,7 +1,8 @@
+import { ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceLine, Area } from 'recharts';
+import { TrendingUp, Activity } from 'lucide-react';
 'use client'
 
 import { INSIGHTS_PALETTE } from './palette';
-const LINE_COLOR = INSIGHTS_PALETTE[0];
 
 // ── Mock data ─────────────────────────────────────────────────────────────────
 
@@ -45,7 +46,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 
   return (
     <div className="rounded-xl border border-white/10 bg-black/80 px-4 py-3 shadow-2xl text-sm" aria-live="polite" role="region" aria-label="Remittance trend tooltip">
-      <p className="text-gray-400 font-medium mb-2">{label}</p
+      <p className="text-gray-400 font-medium mb-2">{label}</p>
       <div className="space-y-1">
         <div className="flex justify-between gap-6">
           <span className="text-gray-400">Amount</span>

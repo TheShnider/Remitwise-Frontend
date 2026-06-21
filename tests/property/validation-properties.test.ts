@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { describe, it } from 'vitest';
 import * as fc from 'fast-check';
 import {

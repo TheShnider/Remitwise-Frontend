@@ -30,10 +30,8 @@ export default function SessionExpiryNotification({
   const primaryActionRef = useRef<HTMLButtonElement>(null);
   const isWarning = phase === 'warning';
   const isExpired = phase === 'expired';
-  if (!isWarning && !isExpired) return null;
-
   useEffect(() => {
-    if (phase !== 'none') {
+    if (phase === 'warning' || phase === 'expired') {
       primaryActionRef.current?.focus();
     }
   }, [phase]);
@@ -47,6 +45,8 @@ export default function SessionExpiryNotification({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isWarning, isExpired, onDismiss]);
+
+  if (!isWarning && !isExpired) return null;
 
   return (
     <div

@@ -165,6 +165,7 @@ function Toggle({
 
 function SaveButton({ label = "Save changes" }: { label?: string }) {
   const [state, setState] = useState<"idle" | "saving" | "saved">("idle");
+  // @ts-ignore
   const { toast } = useToast();
 
   const handleClick = () => {

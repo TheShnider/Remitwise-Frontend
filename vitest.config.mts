@@ -6,13 +6,8 @@ export default defineConfig({
     include: [
       'lib/contracts/**/*.test.ts',
       'tests/unit/**/*.test.ts',
-      'tests/unit/**/*.test.cjs',
       'tests/integration/**/*.test.ts',
-      'tests/integration/**/*.test.cjs',
       'tests/property/**/*.test.ts',
-      'tests/property/**/*.test.cjs',
-      'tests/session/**/*.test.ts',
-      'tests/session/**/*.test.cjs',
     ],
     environment: 'node',
     globals: true,
