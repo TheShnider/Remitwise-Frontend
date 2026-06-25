@@ -465,12 +465,12 @@ export default function Bills() {
 
 							<button
 								type='submit'
-								className='flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 font-semibold text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101010] disabled:cursor-not-allowed disabled:opacity-70'
+								className='flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-3 text-center font-semibold text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101010] disabled:cursor-not-allowed disabled:opacity-70 sm:px-6'
 								disabled={pending}>
 								{pending ? (
 									<>
 										<Loader2 className='w-5 h-5 animate-spin' />
-										<span>Preparing Contract Request...</span>
+										<span className='min-w-0 break-words'>Preparing Contract Request...</span>
 									</>
 								) : (
 									"Add Bill"

@@ -31,6 +31,36 @@ async function checkNoHorizontalOverflow(page: Page) {
   expect(hasOverflow).toBe(false);
 }
 
+async function checkVisibleCtasStayInViewport(page: Page) {
+  const overflowingCtas = await page
+    .locator('a, button')
+    .evaluateAll((elements) => {
+      const viewportWidth = document.documentElement.clientWidth;
+
+      return elements
+        .filter((element) => {
+          const style = window.getComputedStyle(element);
+          const rect = element.getBoundingClientRect();
+          const hasLabel = (element.textContent ?? '').trim().length > 0;
+
+          return (
+            hasLabel &&
+            style.display !== 'none' &&
+            style.visibility !== 'hidden' &&
+            rect.width > 0 &&
+            rect.height > 0
+          );
+        })
+        .filter((element) => {
+          const rect = element.getBoundingClientRect();
+          return rect.left < 0 || rect.right > viewportWidth;
+        })
+        .map((element) => (element.textContent ?? '').trim());
+    });
+
+  expect(overflowingCtas).toEqual([]);
+}
+
 // Helper function to check touch target size
 async function checkTouchTargetSize(page: Page, selector: string, minWidth = 44, minHeight = 44) {
   const element = page.locator(selector).first();
@@ -343,4 +373,26 @@ test.describe('Cross-Page Responsive Consistency', () => {
       expect(savingsBox.height).toBeGreaterThanOrEqual(44);
     }
   });
+});
+
+test.describe('Critical Screens - Responsive CTA Audit', () => {
+  const criticalRoutes = ['/send', '/dashboard', '/transactions', '/bills', '/settings'];
+  const auditViewports = [
+    { name: 'iPhone SE', width: 320, height: 568 },
+    { name: 'iPhone 14', width: 375, height: 667 },
+    { name: 'Desktop', width: 1440, height: 900 },
+  ];
+
+  for (const route of criticalRoutes) {
+    for (const { name, width, height } of auditViewports) {
+      test(`${route} - ${name} has no overflow or cropped CTAs`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto(route);
+        await page.waitForLoadState('networkidle');
+
+        await checkNoHorizontalOverflow(page);
+        await checkVisibleCtasStayInViewport(page);
+      });
+    }
+  }
 });
